@@ -9,47 +9,81 @@ namespace Calculator
     {
         static void Main(string[] args)
         {
-            double a1, a2;
-            char zn; 
-            a1 = Convert.ToDouble(Console.ReadLine());
-            zn = Convert.ToChar(Console.ReadLine());
-            a2 = Convert.ToDouble(Console.ReadLine());
-            Calc.Calcul(a1,a2, zn);
+            double a1, a2, a3, r1, r2, a;
+            char zn1, zn2;
+            Console.WriteLine("Enter the number of actions");
+            a = Convert.ToDouble(Console.ReadLine());
+            Console.WriteLine("Enter mathematical expression");
+            if (a == 1) 
+            {
+                a1 = Convert.ToDouble(Console.ReadLine());
+                zn1 = Convert.ToChar(Console.ReadLine());
+                a2 = Convert.ToDouble(Console.ReadLine());
+                r1 = Calc.Calcul(a1, a2, zn1);
+                Console.WriteLine(r1);
+            }
+            if (a == 2)
+            {
+                a1 = Convert.ToDouble(Console.ReadLine());
+                zn1 = Convert.ToChar(Console.ReadLine());
+                a2 = Convert.ToDouble(Console.ReadLine());
+                zn2 = Convert.ToChar(Console.ReadLine());
+                a3 = Convert.ToDouble(Console.ReadLine());
+                if (zn1 == '*' || zn1 == '/' || zn1 == '^' || zn1 == '%')
+                {
+                    r1 = Calc.Calcul(a1, a2, zn1);
+                    r2 = Calc.Calcul(r1, a3, zn2);
+                    Console.WriteLine(r2);
+                }
+                else if (zn2 == '*' || zn2 == '/' || zn2 == '^' || zn2 == '%')
+                {
+                    r1 = Calc.Calcul(a2, a3, zn2);
+                    r2 = Calc.Calcul(a1, r1, zn1);
+                    Console.WriteLine(r2);
+                }
+                else
+                {
+                    r1 = Calc.Calcul(a1, a2, zn1);
+                    r2 = Calc.Calcul(r1, a3, zn2);
+                    Console.WriteLine(r2);
+                }
+            }
             Console.ReadLine();
         }
     }
     class Calc {
-        public static void Calcul(double x, double y, char rez)
+        public static double Calcul(double x, double y, char rez)
         {
             double z;
             switch (rez)
             {
                 case '*':
                     z = x * y;
-                    Console.WriteLine(z);
+                    return z;
                     break;
                 case '+':
                     z = x + y;
-                    Console.WriteLine(z);
+                    return z;
                     break;
                 case '-':
                     z = x - y;
-                    Console.WriteLine(z);
+                    return z;
                     break;
                 case '/':
                     z = x / y;
-                    Console.WriteLine(z);
+                    return z;
                     break;
                 case '^':
                     z = System.Math.Pow(x, y);
-                    Console.WriteLine(z);
+                    return z;
                     break;
                 case '%':
                     z = x % y;
-                    Console.WriteLine(z);
+                    return z;
                     break;
                 default:
-                    Console.WriteLine("Default case");
+                    z = 0;
+                    return z;
                     break;
             }
         }  
