@@ -1,0 +1,57 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+
+namespace Calculator
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            double a1, a2;
+            char zn; 
+            a1 = Convert.ToDouble(Console.ReadLine());
+            zn = Convert.ToChar(Console.ReadLine());
+            a2 = Convert.ToDouble(Console.ReadLine());
+            Calc.Calcul(a1,a2, zn);
+            Console.ReadLine();
+        }
+    }
+    class Calc {
+        public static void Calcul(double x, double y, char rez)
+        {
+            double z;
+            switch (rez)
+            {
+                case '*':
+                    z = x * y;
+                    Console.WriteLine(z);
+                    break;
+                case '+':
+                    z = x + y;
+                    Console.WriteLine(z);
+                    break;
+                case '-':
+                    z = x - y;
+                    Console.WriteLine(z);
+                    break;
+                case '/':
+                    z = x / y;
+                    Console.WriteLine(z);
+                    break;
+                case '^':
+                    z = System.Math.Pow(x, y);
+                    Console.WriteLine(z);
+                    break;
+                case '%':
+                    z = x % y;
+                    Console.WriteLine(z);
+                    break;
+                default:
+                    Console.WriteLine("Default case");
+                    break;
+            }
+        }  
+    }
+}
